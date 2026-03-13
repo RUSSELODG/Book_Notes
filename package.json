@@ -1,0 +1,27 @@
+{
+  "name": "book_notes",
+  "version": "1.0.0",
+  "description": "Some notes on some books read.",
+  "homepage": "https://github.com/RUSSELODG/Book_Notes#readme",
+  "bugs": {
+    "url": "https://github.com/RUSSELODG/Book_Notes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RUSSELODG/Book_Notes.git"
+  },
+  "license": "ISC",
+  "author": "RUSSEL ODG",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  }
+}
