@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS books, notes; -- comment or uncomment and run for testing --
+
+
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
     title VARCHAR(156) NOT NULL,
@@ -7,7 +10,8 @@ CREATE TABLE books (
 );
 
 CREATE TABLE notes (
-    id INT PRIMARY KEY REFERENCES books(id),
+    id SERIAL PRIMARY KEY,
+    book_id INT REFERENCES books(id),
     rating INT CHECK (rating <= 10) NOT NULL,
     year_of_reading INT CHECK (year_of_reading BETWEEN 1900 AND 2100),
     notes TEXT NOT NULL,
