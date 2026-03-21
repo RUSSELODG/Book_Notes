@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS books, notes; -- comment or uncomment and run for testing --
-
+DROP TABLE IF EXISTS books, notes; 
 
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,
@@ -20,9 +19,9 @@ CREATE TABLE notes (
 
 
 
--- test data
+
 -- INSERT INTO books (title, author, isbn, cover) 
--- VALUES ('john smith', 'John Smith', '0000000000', 'https://test');
+-- VALUES ('john smith Life', 'John Smith', '0000000000', 'https://test');
 
 -- INSERT INTO notes (book_id, rating, year_of_reading, notes, amazon_link)
--- VALUES (2, 5, 2025, 'blablabla', 'https://amazon.com');
+-- VALUES (1, 5, 2025, 'blablabla', 'https://amazon.com');
