@@ -1,0 +1,14 @@
+        <footer>
+            <div class="footer-infos">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+            </div>
+            <div class="footer-separator-line"></div>
+            <% if (locals.currentYear) { %>
+                <div class="footer-copyright">© <%=currentYear%> BookNotes, Inc</div>
+            <% } else { %>
+                <div class="footer-copyright">© 2026 BookNotes, Inc</div>
+            <% }; %>
+        </footer>
+    </body>
+</html>

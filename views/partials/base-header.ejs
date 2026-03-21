@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <% if (locals.pageTitle) { %>
+            <title>BookNotes | <%= pageTitle %></title> 
+        <% } else { %>
+            <title>BookNotes</title>
+        <% }; %>
+        <link rel="icon" type="image/png" href="images/bnoteslogo.png">
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <a href="/">
+                    <img src="images/bnoteslogo.png" alt="BookNotes Logo">
+                </a>
+                <a href="/">
+                    <p>BookNotes</p>
+                </a>
+            </div>
+            <div class="navbar-options">
+                <div class="navbar-new_essay">
+                    <a href="/new-essay">
+                        <img src="images/pencil.svg" alt="create new essay icon">
+                    </a>
+                    <a href="/new-essay">
+                        <p>New Essay</p>
+                    </a>
+                </div>
+                <div class="navbar-my_essays">
+                    <a href="/my-essays">
+                        <img src="images/eye.svg" alt="read my essays icon">
+                    </a>
+                    <a href="/my-essays">
+                        <p>My Essays</p>
+                    </a> 
+                </div>
+            </div>
+        </div>
+        
+
