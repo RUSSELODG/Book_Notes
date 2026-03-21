@@ -2,14 +2,48 @@
 
 
 <% if (locals.booksAndNotes) { %>
-Books I’ve read
-Tiny summary but detailed notes for each. Use the ISBN number to find it from your local library or anywhere else. This page will constantly update as I read more, so bookmark it if you want to check back in a few months.
+    <h1>Book Notes</h1>
+    
+    <div class="home-header">
+        <% if (booksAndNotes.length > 1) { %>
+            <h2>Books I’ve read</h2>
+            <p>Tiny summary but <span>detailed notes for each.</span></p>
+        <% } else { %>
+            <h2>Book I've read</h2>
+            <p>Tiny summary but <span>detailed notes.</span></p>
+        <% }; %>
+        <p>Use the ISBN number to find it from your local library or anywhere else. 
+        <span>This page will constantly update as I read more</span>, so bookmark it if you want to check back in a few months.</p>
+        <p>Sorted with <span>my top recommendations up top</span>. Sort by <a href="#">title</a>, <a href="#">newest</a>, or <a href="#">best</a>.</p>
+    </div>
 
-Sorted with my top recommendations up top. Sort by title, newest, or best.
 
-<%    booksAndNotes.forEach((bookAndNotes) => { %>
-    <%= bookAndNotes.title%>
-<%    }); %>
+    <% booksAndNotes.forEach((bookAndNotes) => { %>
+        <div class="book-preview">
+            <div class="book-preview-summary" style="display:inline-block;">
+                <a href="#">
+                    <img src="#" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
+                </a>
+                <a href="#">
+                    <p><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></p>
+                </a>
+                <% if (bookAndNotes.year_of_reading) { %>
+                    <p class="rating">YEAR OF READING: <%= bookAndNotes.year_of_reading %>. HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
+                <% } else { %>
+                    <p class="rating">HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
+                <% }; %>
+                <p class="notes-summary"><%= bookAndNotes.notes.slice(0, 350) %>...</p>
+            </div>
+            <div class="book-preview-links">
+                <% if (bookAndNotes.amazon_link) { %>
+                    <a href="#">Read my notes</a>, or go to the <a href="#">Amazon page</a> for details and reviews.
+                <% } else { %>
+                    <a href="#">Read my notes.</a>
+                <% }; %>
+            </div>
+            
+        </div>
+    <% }); %>
 
 <% } else { %>
     Create new notes!
