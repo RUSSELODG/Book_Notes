@@ -22,7 +22,7 @@
         <div class="book-preview">
             <div class="book-preview-summary" style="display:inline-block;">
                 <a href="#">
-                    <img src="#" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
+                    <img src="<%=bookAndNotes.cover%>" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
                 </a>
                 <a href="#">
                     <p><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></p>
@@ -46,7 +46,7 @@
     <% }); %>
 
 <% } else { %>
-    Create new notes!
+    <a href="/create-new-notes">Create new notes!</a>
 <% }; %>
 
 

@@ -1,0 +1,24 @@
+<%-  include("partials/base-header.ejs") %>
+
+
+<h1>New Notes🪶</h1>
+
+
+<div class="submit-essay-container">
+    <form action="/create-new-notes" method="POST">
+        <input type="text" name="title" placeholder="Book's Title (156 characters max)" maxlength="156" required>
+        <input type="text" name="author" placeholder="Author (156 characters max)" maxlength="156" required>
+        <input type="text" name="isbn" placeholder="ISBN (10)" minlength="10" maxlength="10" required>
+        <input type="number" name="rating" placeholder="Rating /10" min="0" max="10" required>
+        <input type="number" name="year_of_reading" placeholder="Year of reading (optional)" min="1900" max="<%= currentYear %>">
+        <input type="text" value="amazon_link" placeholder="Link to buy the book on Amazon (optional)" maxlength="75">
+        <textarea name="notes" rows="20" cols="80" maxlength="24999" placeholder="Write your notes here..." required></textarea>
+        <input type="submit" value="OK">
+    </form>
+</div>
+
+
+
+
+
+<%- include("partials/base-footer.ejs") %>
