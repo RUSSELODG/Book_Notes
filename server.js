@@ -24,7 +24,7 @@ db.connect();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static("public"));
 
-const OrderBooksAndNotesBy = "notes.id DESC"; // recency, latest updated notes (default)
+const OrderBooksAndNotesBy = "books.last_updated_at DESC"; // recency, latest updated notes (default)
 
 async function checkBookAndNotes() {
     let booksAndNotes = [];
@@ -126,14 +126,6 @@ app.post("/create-new-notes", async (req, res) => {
     res.redirect("/");
 });
 
-//  if (eTitle.trim().length > 41 || eContent.trim().length > 16160) {
-//     let error = "ERROR! Title or Content too Long! Please Go back to the previous page and try again!";
-//     return res.status(400).send(error);
-//   };
-//   if (eTitle.trim().length ===0 || eContent.trim().length ===0 ) {
-//     let error = "ERROR! Your Essay either lacks a title or content or both. Please Go back to the previous page and try again!";
-//     return res.status(400).send(error);
-//   };
 
 
 

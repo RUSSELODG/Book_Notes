@@ -5,7 +5,8 @@ CREATE TABLE books (
     title VARCHAR(156) NOT NULL,
     author VARCHAR(156) NOT NULL,
     isbn TEXT CHECK (LENGTH(isbn) = 10),
-    cover VARCHAR(75)
+    cover VARCHAR(75),
+    last_updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE notes (
