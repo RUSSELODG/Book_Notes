@@ -46,7 +46,7 @@ async function checkNotesUserWrote (reqBody) {
         year_of_reading = parseInt(reqBody.year_of_reading);
     };
     let amazon_link = null;
-    if (reqBody.amazon_link) {
+    if (reqBody.amazon_link !== null) {
         amazon_link = reqBody.amazon_link;
     };
 
@@ -117,7 +117,7 @@ app.post("/create-new-notes", async (req, res) => {
     };
 
     let amazon_link = null;
-    if (req.body.amazon_link) {
+    if (req.body.amazon_link !== null) {
         amazon_link = req.body.amazon_link;
     };
 
@@ -139,9 +139,29 @@ app.post("/create-new-notes", async (req, res) => {
     res.redirect("/");
 });
 
-app.get("/notes/:id", async (req, res) => {
+app.get("/read-notes/:id", async (req, res) => {
     let book_id = req.params.id;
-    res.redirect("/");
+    let bookAndNotes;
+    try {
+        let result=  await db.query("SELECT * FROM notes JOIN books ON books.id = book_id WHERE book_id = $1", [book_id]);
+        bookAndNotes = result.rows[0];
+    } catch (err) {
+        console.log("Error querying data:");
+        console.log(err);
+        let error = "Error querying these notes."+try_again_msg;
+        res.status(400..send(error));
+    }    
+
+    let result = await db.query("SELECT COUNT(*) FROM notes JOIN books ON books.id = book_id");
+    let numberOfNotes = parseInt(result.rows[0].count, 10) //10 here means I'm working with decimals.
+
+    let data = {
+        pageTitle: "notes #"+book_id,
+        currentYear: year,
+        bookAndNotes: bookAndNotes,
+        numberOfNotes: numberOfNotes,
+    };
+    res.render("read-notes.ejs", data);
 });
 
 
@@ -157,7 +177,7 @@ app.get("/edit-notes/:id", async (req, res) => {
     let bookAndNotes = result.rows[0];
 
     let data = {
-        pageTitle: "Edit Notes #"+book_id ,
+        pageTitle: "Edit Notes#"+book_id ,
         currentYear: year,
         bookAndNotes: bookAndNotes,        
     };

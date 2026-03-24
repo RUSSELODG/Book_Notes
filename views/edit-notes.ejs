@@ -10,14 +10,14 @@
             <input type="text" name="isbn" placeholder="ISBN (10)" minlength="10" maxlength="10" required value="<%= bookAndNotes.isbn %>">
             <input type="number" name="rating" placeholder="Rating /10" min="0" max="10" required value="<%= bookAndNotes.rating %>">
             <input type="number" name="year_of_reading" placeholder="Year of reading (optional)" min="1900" max="<%= currentYear %>" value="<%= bookAndNotes.year_of_reading %>">
-            <input type="text" value="amazon_link" placeholder="Link to buy the book on Amazon (optional)" maxlength="75" value="<%= bookAndNotes.amazon_link %>">
+            <input type="text" name="amazon_link" placeholder="Link to buy the book on Amazon (optional)" maxlength="75" value="<%= bookAndNotes.amazon_link %>">
             <textarea name="notes" rows="20" cols="80" maxlength="24999" placeholder="Write your notes here..." required><%= bookAndNotes.notes %></textarea>
             <input type="submit" value="OK" />
         </form>
     </div>
 <% } else { %>
-    <p>No essay to edit here. (Maybe it was deleted already.)</p>
-    <p>Create a new one <a href="/create-new-notes">here</a></p>
+    <p>No notes to edit here. (Maybe it was deleted already.)</p>
+    <p>Create some new one <a href="/create-new-notes">here</a></p>
 <% }; %>
 
 

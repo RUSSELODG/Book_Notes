@@ -21,10 +21,10 @@
     <% booksAndNotes.forEach((bookAndNotes) => { %>
         <div class="book-preview">
             <div class="book-preview-summary" style="display:inline-block;">
-                <a href="#">
+                <a href="/read-notes/<%= bookAndNotes.book_id %>">
                     <img src="<%=bookAndNotes.cover%>" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
                 </a>
-                <a href="#">
+                <a href="/read-notes/<%= bookAndNotes.book_id %>">
                     <p><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></p>
                 </a>
                 <% if (bookAndNotes.year_of_reading) { %>
@@ -32,14 +32,14 @@
                 <% } else { %>
                     <p class="rating">HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
                 <% }; %>
-                <p>Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
+                <p style="white-space: pre-wrap;">Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
                 <p class="notes-summary"><%= bookAndNotes.notes.slice(0, 350) %>...</p>
             </div>
             <div class="book-preview-links">
                 <% if (bookAndNotes.amazon_link) { %>
-                    <a href="#">Read my notes</a>, or go to the <a href="#">Amazon page</a> for details and reviews.
+                    <a href="/read-notes/<%= bookAndNotes.book_id %>">Read my notes</a>, or go to the <a href="<%= bookAndNotes.amazon_link %>">Amazon page</a> for details and reviews.
                 <% } else { %>
-                    <a href="#">Read my notes.</a>
+                    <a href="/read-notes/<%= bookAndNotes.book_id %>">Read my notes.</a>
                 <% }; %>
             </div>
             

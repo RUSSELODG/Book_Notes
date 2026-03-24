@@ -1,0 +1,39 @@
+<%- include("partials/base-header.ejs") %>
+
+
+
+<% if (locals.bookAndNotes) { %>
+    <div class="reading-notes">
+        <img src="<%=bookAndNotes.cover%>" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
+        <h1><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></h1>
+        <p>ISBN(10): <%= bookAndNotes.isbn %></p>
+        <% if (bookAndNotes.year_of_reading) { %>
+            <p>YEAR OF READING: <%= bookAndNotes.year_of_reading%></p>
+        <% }; %>
+        <p>HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
+        <% if (locals.numberOfNotes && numberOfNotes > 1) { %>
+            <p>(SEE <a>MY LIST OF <%= numberOfNotes %> BOOKS</a>, FOR MORE.)</p>
+        <% }; %>
+        <% if (bookAndNotes.amazon_link) { %>
+            <p>Go to the <a href="<%= bookAndNotes.amazon_link%>">Amazon page</a> for details and reviews</p>
+        <% }; %>
+
+        <h2>MY NOTES</h2>
+        <p style="white-space: pre-wrap;"><%= bookAndNotes.notes%></p>
+
+        <p>Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
+
+
+    </div>
+
+<% } else { %>
+    <p>No notes to read here. (Maybe it was deleted or just never created)</p>
+    <p>Create some new one <a href="/create-new-notes">here</a>.</p>
+    <% if (locals.numberOfNotes && numberOfNotes > 1) { %>
+        <p>Or read the other notes <a href="/">here</a>.</p>
+    <% }; %>
+<% } %>
+
+
+
+<%- include("partials/base-footer.ejs") %>
