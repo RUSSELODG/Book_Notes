@@ -6,7 +6,7 @@
     
     <div class="home-header">
         <% if (booksAndNotes.length > 1) { %>
-            <h2>Books I’ve read</h2>
+            <h2>Books I’ve read(<%=booksAndNotes.length%>)</h2>
             <p>Tiny summary but <span>detailed notes for each.</span></p>
         <% } else { %>
             <h2>Book I've read</h2>
@@ -32,6 +32,7 @@
                 <% } else { %>
                     <p class="rating">HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
                 <% }; %>
+                <p>Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
                 <p class="notes-summary"><%= bookAndNotes.notes.slice(0, 350) %>...</p>
             </div>
             <div class="book-preview-links">
