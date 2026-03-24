@@ -139,6 +139,11 @@ app.post("/create-new-notes", async (req, res) => {
     res.redirect("/");
 });
 
+app.get("/notes/:id", async (req, res) => {
+    let book_id = req.params.id;
+    res.redirect("/");
+});
+
 
 app.get("/edit-notes/:id", async (req, res) => {
     let book_id = req.params.id;
@@ -196,8 +201,19 @@ app.post("/edit-notes/:id", async (req, res) => {
     res.redirect("/");
 });
 
-app.post("/delete-notes/:id", async (req, res) => {
+app.get("/delete-notes/:id", async (req, res) => {
+    let book_id = req.params.id;
+    try {
+        await db.query("DELETE from notes WHERE book_id = $1", [book_id]);
+        await db.query("DELETE FROM books WHERE books.id = $1", [book_id]);  
+    } catch (err) {
+        console.log("Error deleting notes:");
+        console.log(err);
+        let error = "Error deleting notes #"+book_id+"."+try_again_msg;
+        res.status(400).send(error);
+    }
 
+    res.redirect("/");
 });
 
 
