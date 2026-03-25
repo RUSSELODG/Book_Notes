@@ -24,7 +24,7 @@ db.connect();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static("public"));
 
-const OrderBooksAndNotesBy = "books.last_updated_at DESC"; // recency, latest updated notes (default)
+let OrderBooksAndNotesBy = "books.last_updated_at DESC"; // recency, latest updated notes (default)
 const try_again_msg = " Please Go back to the previous page and try again!";
 
 async function checkBookAndNotes() {
@@ -95,6 +95,25 @@ app.get("/", async (req, res) => {
         booksAndNotes: booksAndNotes,
     };
     res.render("index.ejs", data);
+});
+
+app.post("/sortNotes", (req, res) => {
+    let orderBy = req.body.orderBy;
+    switch (orderBy) {
+        case "title":
+            OrderBooksAndNotesBy = "books.title ASC"; // title 
+            break;
+        case "recency":
+            OrderBooksAndNotesBy = "books.last_updated_at DESC"; // recency, latest updated notes (default)
+            break;
+        case "rating":
+            OrderBooksAndNotesBy = "notes.rating DESC"; // rating
+            break;
+        default:
+            OrderBooksAndNotesBy = "books.last_updated_at DESC"; // recency, latest updated notes (default)
+    };
+
+    res.redirect("/");
 });
 
 app.get("/create-new-notes", (req, res) => {
@@ -221,6 +240,7 @@ app.post("/edit-notes/:id", async (req, res) => {
     res.redirect("/");
 });
 
+// use a post route method instead if it's a serious project.
 app.get("/delete-notes/:id", async (req, res) => {
     let book_id = req.params.id;
     try {
