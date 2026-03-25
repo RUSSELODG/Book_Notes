@@ -39,6 +39,11 @@
 
     <% booksAndNotes.forEach((bookAndNotes) => { %>
         <div class="book-preview">
+            <div class="book-preview-actions">
+                <a href="/read-notes/<%= bookAndNotes.book_id %>"><img src="images/eye.svg" alt="read notes icon"></a>
+                <a href="/edit-notes/<%= bookAndNotes.book_id %>"><img src="images/pencil.svg" alt="edit notes icon"></a>
+                <a href="/delete-notes/<%= bookAndNotes.book_id %>"><img src="images/delete_icon.png" alt="delete notes img icon"></a>
+            </div>
             <div class="book-preview-summary" style="display:inline-block;">
                 <a href="/read-notes/<%= bookAndNotes.book_id %>">
                     <img src="<%=bookAndNotes.cover%>" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
