@@ -5,29 +5,32 @@
 <% if (locals.bookAndNotes) { %>
     <div class="reading-notes">
         <div class="book-preview-actions">
-            <a href="/edit-notes/<%= bookAndNotes.book_id %>"><img src="images/pencil.svg" alt="edit notes icon"></a>
-            <a href="/delete-notes/<%= bookAndNotes.book_id %>"><img src="images/delete_icon.png" alt="delete notes img icon"></a>
+            <a href="/edit-notes/<%= bookAndNotes.book_id %>"><img src="/images/pencil.svg" alt="edit notes icon"></a>
+            <a href="/delete-notes/<%= bookAndNotes.book_id %>"><img src="/images/delete_icon.png" alt="delete notes img icon"></a>
         </div>
-        <img src="<%=bookAndNotes.cover%>" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
-        <h1><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></h1>
-        <p>ISBN(10): <%= bookAndNotes.isbn %></p>
-        <% if (bookAndNotes.year_of_reading) { %>
-            <p>YEAR OF READING: <%= bookAndNotes.year_of_reading%></p>
-        <% }; %>
-        <p>HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
-        <% if (locals.numberOfNotes && numberOfNotes > 1) { %>
-            <p>(SEE <a>MY LIST OF <%= numberOfNotes %> BOOKS</a>, FOR MORE.)</p>
-        <% }; %>
-        <% if (bookAndNotes.amazon_link) { %>
-            <p>Go to the <a href="<%= bookAndNotes.amazon_link%>">Amazon page</a> for details and reviews</p>
-        <% }; %>
+        <div class="book-preview-summary">
+            <img src="<%=bookAndNotes.cover%>" alt="cover img">
+            <h1><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></h1>
+            <p class="slightly-transparent">ISBN(10): <%= bookAndNotes.isbn %></p>
+            <% if (bookAndNotes.year_of_reading) { %>
+                <p class="slightly-transparent">YEAR OF READING: <%= bookAndNotes.year_of_reading%></p>
+            <% }; %>
+            <p class="slightly-transparent">HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
+        </div>
+        <div class="book-preview-links">
+            <% if (locals.numberOfNotes && numberOfNotes > 1) { %>
+                <p class="slightly-transparent">(SEE <a href="/">MY LIST OF <%= numberOfNotes %> BOOKS</a>, FOR MORE.)</p>
+            <% }; %>
+            <% if (bookAndNotes.amazon_link) { %>
+                <p>Go to the <a href="<%= bookAndNotes.amazon_link%>">Amazon page</a> for details and reviews</p>
+            <% }; %>               
+        </div>
+        <div class="the-notes">
+            <h2>MY NOTES</h2>
+            <p style="white-space: pre-wrap;"><%= bookAndNotes.notes%></p>            
+        </div>
 
-        <h2>MY NOTES</h2>
-        <p style="white-space: pre-wrap;"><%= bookAndNotes.notes%></p>
-
-        <p>Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
-
-
+        <p class="slightly-transparent">(Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.)</p>
     </div>
 
 <% } else { %>

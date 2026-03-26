@@ -3,8 +3,8 @@
 <h1>Edit Notes🪶</h1>
 
 <% if (locals.bookAndNotes) { %>
-    <div class="submit-essay-container">
-        <form class="essay-form" action="/edit-notes/<%= bookAndNotes.book_id %>" method="POST">
+    <div class="submit-notes-container">
+        <form action="/edit-notes/<%= bookAndNotes.book_id %>" method="POST">
             <input type="text" name="title" placeholder="Book's Title (156 characters max)" maxlength="156" required value="<%= bookAndNotes.title %>">
             <input type="text" name="author" placeholder="Author (156 characters max)" maxlength="156" required value="<%= bookAndNotes.author %>">
             <input type="text" name="isbn" placeholder="ISBN (10)" minlength="10" maxlength="10" required value="<%= bookAndNotes.isbn %>">
@@ -19,8 +19,6 @@
     <p>No notes to edit here. (Maybe it was deleted already.)</p>
     <p>Create some new one <a href="/create-new-notes">here</a></p>
 <% }; %>
-
-
 
 
 

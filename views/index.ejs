@@ -15,53 +15,56 @@
         <p>Use the ISBN number to find it from your local library or anywhere else. 
         <span>This page will constantly update as I read more</span>, so bookmark it if you want to check back in a few months.</p>
         <p>Sorted with <span>my top recommendations</span>.</p>
-        <p>Sort by: 
-            <form action="/sortNotes" method="POST" style="display: inline;">
-                <input type="hidden" name="orderBy" value="title">
-                <button type="submit" style="border:none; background:none; padding:0; text-decoration:underline;">
-                    title
-                </button>
-            </form>
-            <form action="/sortNotes" method="POST" style="display: inline;">
-                <input type="hidden" name="orderBy" value="recency">
-                <button type="submit" style="border:none; background:none; padding:0; text-decoration:underline;">
-                    newest
-                </button>
-            </form>or
-            <form action="/sortNotes" method="POST" style="display: inline;">
-                <input type="hidden" name="orderBy" value="rating">
-                <button type="submit" style="border:none; background:none; padding:0; text-decoration:underline;">
-                    best
-                </button>
-            </form>.
-        </p>
+        <div class="sortBy">
+            <p>Sort by:  </p>
+                <form action="/sortNotes" method="POST">
+                    <input type="hidden" name="orderBy" value="title">
+                    <button type="submit">
+                        title
+                    </button>
+                </form>
+                <form action="/sortNotes" method="POST">
+                    <input type="hidden" name="orderBy" value="recency">
+                    <button type="submit">
+                        newest
+                    </button>
+                </form> or
+                <form action="/sortNotes" method="POST">
+                    <input type="hidden" name="orderBy" value="rating">
+                    <button type="submit">
+                        best
+                    </button>
+                </form>.
+        </div>
 
+        
+    </div>
 
     <% booksAndNotes.forEach((bookAndNotes) => { %>
         <div class="book-preview">
             <div class="book-preview-actions">
-                <a href="/read-notes/<%= bookAndNotes.book_id %>"><img src="images/eye.svg" alt="read notes icon"></a>
-                <a href="/edit-notes/<%= bookAndNotes.book_id %>"><img src="images/pencil.svg" alt="edit notes icon"></a>
-                <a href="/delete-notes/<%= bookAndNotes.book_id %>"><img src="images/delete_icon.png" alt="delete notes img icon"></a>
+                <a href="/read-notes/<%= bookAndNotes.book_id %>"><img src="/images/eye.svg" alt="read notes icon"></a>
+                <a href="/edit-notes/<%= bookAndNotes.book_id %>"><img src="/images/pencil.svg" alt="edit notes icon"></a>
+                <a href="/delete-notes/<%= bookAndNotes.book_id %>"><img src="/images/delete_icon.png" alt="delete notes img icon"></a>
             </div>
-            <div class="book-preview-summary" style="display:inline-block;">
+            <div class="book-preview-summary">
                 <a href="/read-notes/<%= bookAndNotes.book_id %>">
-                    <img src="<%=bookAndNotes.cover%>" alt="cover img" style="float:left; background-color: grey; height: 185px; width: 145px;">
+                    <img src="<%=bookAndNotes.cover%>" alt="cover img">
                 </a>
                 <a href="/read-notes/<%= bookAndNotes.book_id %>">
-                    <p><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></p>
+                    <h2><%= bookAndNotes.title %> - By <%= bookAndNotes.author %></h2>
                 </a>
                 <% if (bookAndNotes.year_of_reading) { %>
-                    <p class="rating">YEAR OF READING: <%= bookAndNotes.year_of_reading %>. HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
+                    <p class="slightly-transparent">YEAR OF READING: <%= bookAndNotes.year_of_reading %>. HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
                 <% } else { %>
-                    <p class="rating">HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
+                    <p class="slightly-transparent">HOW STRONGLY I RECOMMEND IT: <%= bookAndNotes.rating %>/10</p>
                 <% }; %>
-                <p style="white-space: pre-wrap;">Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
+                <p class="slightly-transparent">Last updated at: <%= bookAndNotes.last_updated_at.toLocaleString() %>.</p>
                 <p class="notes-summary"><%= bookAndNotes.notes.slice(0, 350) %>...</p>
             </div>
             <div class="book-preview-links">
                 <% if (bookAndNotes.amazon_link) { %>
-                    <a href="/read-notes/<%= bookAndNotes.book_id %>">Read my notes</a>, or go to the <a href="<%= bookAndNotes.amazon_link %>">Amazon page</a> for details and reviews.
+                    <a href="/read-notes/<%= bookAndNotes.book_id %>">Read my notes</a>, or go to the <a href="<%= bookAndNotes.amazon_link %>" target="_blank">Amazon page</a> for details and reviews.
                 <% } else { %>
                     <a href="/read-notes/<%= bookAndNotes.book_id %>">Read my notes.</a>
                 <% }; %>

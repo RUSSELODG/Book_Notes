@@ -1,11 +1,12 @@
 /* comment and uncomment for debugging purposes */
-/* *{
+/* * {
     outline: 1px red solid;
 } */
 
-:root {
+
+/* :root {
     --light-green: rgb(189, 255, 215);
-}
+}  */
 
 body {
     text-align: center;
@@ -16,6 +17,8 @@ body {
     padding-bottom: 200px;
     margin-top: 60px;
 }
+
+
 
 .navbar {
     height: 50px;
@@ -36,7 +39,7 @@ body {
 }
 
 .navbar-logo {
-    background-color: var(--light-green);
+    /* background-color: var(--light-green); */
     margin-left: 0px;
     display: flex;
     flex-direction: row;
@@ -53,6 +56,10 @@ body {
 
 .navbar-logo p{
     align-self: flex-end;
+    font-size: 30px;
+    /* background-color: red; */
+    /* text-align: center; */
+    margin-top: 10px;
     font-weight: bold;
     font-style: italic;
     color: blue;
@@ -87,6 +94,8 @@ body {
     align-self: flex-end;
 }
 
+
+
 footer {
     text-align: center;
     width: 100%;
@@ -114,4 +123,123 @@ footer {
     background-color: #909090;
     width: 100%;
     margin-bottom: 10px;
+}
+
+
+
+.home-header {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 2px #909090 solid;
+    padding-bottom: 30px;
+    margin-bottom: 45px;
+}
+
+.home-header span {
+    font-weight: bold;
+}
+
+.sortBy p {
+    margin-top: 0;
+    float: left;
+    margin-right: 10px;
+}
+
+.sortBy form {
+    display: inline-block;
+}
+
+.sortBy form button {
+    border: none;
+    background: none;
+    padding: 0;
+    text-decoration: underline;
+    color: blue;
+}
+
+
+.book-preview {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+
+.book-preview-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px #000000 solid;
+
+}
+
+.book-preview-actions img {
+    height: 20px;
+    width: 20px;
+    margin-bottom:0;
+    display: block;
+}
+
+.book-preview-summary {
+    width: 100%;
+    display:inline-block;
+}
+
+.book-preview-summary img {
+    float: left;
+    background-color: grey;
+    height: 185px;
+    width: 135px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.slightly-transparent {
+    color: rgba(105, 55, 55, 0.7);
+}
+
+
+
+.submit-notes-container {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit-notes-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.submit-notes-container * {
+    padding: 5px;
+}
+
+.submit-notes-container input[name="title"] {
+    font-weight: 400;
+}
+
+
+
+.reading-notes {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+.the-notes {
+    margin-top: 45px;
 }
