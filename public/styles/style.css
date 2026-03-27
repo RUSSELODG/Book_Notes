@@ -243,3 +243,37 @@ footer {
 .the-notes {
     margin-top: 45px;
 }
+
+
+
+
+.about-page-img {
+    width: 400px;
+    height: 350px;
+    /* default: 496px width      321px height  */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px #000000 solid;
+}
+
+h1.about-page {
+    text-decoration: underline;
+    margin-bottom: 45px;
+}
+
+h2.about-page {
+    color: rgb(105, 55, 55);
+}
+
+.the-project-instructions {
+    width: 100%;
+    padding: 5px 10px 10px 20px;
+    color: rgb(105, 55, 55);
+    background-color: rgba(230, 230, 250, 0.25);
+}
+
+.orange-encased {
+    color: #c4710d;
+    border: 1px solid grey;
+    padding: 2px;
+}

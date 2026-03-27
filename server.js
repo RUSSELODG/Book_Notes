@@ -256,7 +256,13 @@ app.get("/delete-notes/:id", async (req, res) => {
     res.redirect("/");
 });
 
-
+app.get("/about", (req, res) => {
+    let data = {
+        pageTitle: "About",
+        currentYear: year,
+    };
+    res.render("about.ejs", data);
+});
 
 
 app.listen(port, () => {
