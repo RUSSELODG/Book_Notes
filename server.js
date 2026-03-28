@@ -3,10 +3,13 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import dotenv from "dotenv";
 dotenv.config();
+import axios from "axios";
 
 
 const app = express();
 const port = 3000;
+
+const API_URL = "http://localhost:4000";
 
 const date = new Date();
 const year = date.getFullYear();
@@ -264,6 +267,31 @@ app.get("/about", (req, res) => {
     res.render("about.ejs", data);
 });
 
+
+
+// hitting the API Example;
+app.get("/get-all-books-and-notes", async (req, res) => {
+    try {
+        let response = await axios.get(`${API_URL}/get-books-and-notes-by-id-desc`);
+        // console.log(response); 
+        res.send(response.data);
+    } catch (err) {
+        // console.log("Error querying data: ", err);
+        res.status(500).json({message: "Error fetching books and notes!"});
+    }
+});
+
+app.get("/get-book-and-notes-by-id", async (req, res) => {
+    let id = 12; // or something else you want.
+    try {
+        let response = await axios.get(`${API_URL}/get-book-and-notes/${id}`);
+        // console.log(response); 
+        res.send(response.data);
+    } catch (err) {
+        // console.log("Error querying data: ", err);
+        res.status(500).json({message: "Error fetching book and notes!"});
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is up and running on port ${port}.`);
