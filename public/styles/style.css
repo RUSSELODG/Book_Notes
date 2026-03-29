@@ -1,4 +1,4 @@
-/* comment and uncomment for debugging purposes */
+/* comment and uncomment the first one for debugging purposes */
 /* * {
     outline: 1px red solid;
 } */
@@ -277,3 +277,111 @@ h2.about-page {
     border: 1px solid grey;
     padding: 2px;
 }
+
+
+
+@media (max-width: 876px) {
+    .home-header, .book-preview, .reading-notes {
+        width: 90%;
+    }
+
+    .submit-notes-container {
+        width: 80%;
+    }
+
+    .home-header, .book-preview, .reading-notes {
+        text-align: left;
+    }
+
+    .the-project-instructions {
+        width: 95%;
+    }
+}
+
+@media (max-width: 655px) {
+    /* body {
+        background-color: blue;
+    } */
+
+    .navbar-options {
+        margin-right: 0;
+    }
+
+    .navbar-logo p{
+        font-size: 15px;
+        margin-top: 15px;
+    }
+
+    .submit-notes-container {
+        width: 90%;
+    }
+
+    .the-project-instructions {
+        width: 90%;
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .home-header, .book-preview, .submit-notes-container, .reading-notes {
+        width: 95%;
+    }
+
+    .navbar-options {
+        gap: 10px;
+    }
+
+    .navbar-options img {
+        height: 15px;
+        width: 15px;
+    }
+
+    .book-preview-summary img {
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-page-img {
+        width: 80%;
+        height: 200px;
+    }
+
+    .the-project-instructions {
+        width: 90%;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 340px) {
+    .navbar-options {
+        width: 100px;
+        height: 50px;
+        flex-direction: column;
+        margin-right: 0;
+        justify-content: center;
+        align-items: flex-start; 
+    }
+
+    .navbar-options div {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .navbar-options p {
+        margin: 0;
+    }
+
+    .navbar-options img {
+        height: 13px;
+        width: 13px;
+    }
+
+    .the-project-instructions {
+        width: 90%;
+        padding-left: 0;
+    }
+}
+
+
