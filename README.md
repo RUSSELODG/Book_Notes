@@ -31,7 +31,7 @@ It's a webApp for Notes taking on some books you read.
 - Delete Notes.
 ![Actions on a Book's Notes](screenshots_for_README/notes_actions.png)
 
-- An API to allow other people or agents to fetch all the Books and Notes or the Notes on a particular by id.
+- An API to fetch all the Books and Notes or the Notes on a particular by id.
 ![Api test 1 with postman](screenshots_for_README/api-test1.png)
 ![Api test 2 with postman](screenshots_for_README/api-test2.png)
 
@@ -74,6 +74,17 @@ In your IDE's terminal, cd into the project then run ---  npm i  --- or ---  npm
 
 Create a new file named .env, then inside it, paste what's in .env.example and replace the variables names with the correct values about your database. (Mandatory to run this project).
 
-You can now run --- node server.js --- or --- nodemon server.js --- in your IDE terminal to start the server and browse the website while performing some CRUD operations.
+You can now run `node server.js` or `nodemon server.js` in your IDE terminal to start the server and browse the website while performing some CRUD operations.
 
-Run -- node api.js -- or -- nodemon api.js -- in the terminal to run the Api if you want.
+Run `node api.js` or `nodemon api.js` in the terminal to run the Api if you want.
+
+
+## Good to know for this version concerning the ISBN(10)
+The images for the Books Covers are retrieved from the Open Library API https://openlibrary.org/dev/docs/api/covers.
+
+But we don't download them to store them locally. We don't need to. You can just paste an ISBN(10) and 
+the image will appear. That's the reason why we only use ISBN(10) and not ISBN(13).
+
+So, for this version, when adding a book, search for it on https://openlibrary.org/ so that you can get the ISBN(10) that's guaranteed to give you the book's cover image.
+
+And that's why in the database we store the cover img url instead of only having the ISBN given that we can just use the ISBN on the ejs file to get the cover. That way, in the future, you could just store a different url and not rely on openlibrary's good will.
