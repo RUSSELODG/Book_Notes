@@ -2,46 +2,78 @@
 Some notes on some books read.
 
 
-# previous project sample
-↓↓↓↓↓♣
-
-# HumStory
-"Ye shall know the truth, and the truth shall make you free" John 8:32 
-
 ## What is this?
-HumStory.fun, no I didn't register the domain name, is a simple project made with a bit of lazyness but can definitely make you smile. You refresh the home page and you get a Random Confession. 
+Book_Notes is a project I made as an exercise given by Angela Yu in her Webdev course(https://www.udemy.com/course/the-complete-web-development-bootcamp/).
+It's inspired from this Derek Siver's website: https://sive.rs/book.
 
-Thanks to Angela from https://appbrewery.com/ for providing the api through the url 
-"https://secrets-api.appbrewery.com/"
+It's a webApp for Notes taking on some books you read.
+
+![Homepage preview](screenshots_for_README/home_page.png)
+
 
 ## Features
 - No Authentication required.
-- We get a random story by hitting this URL with the /random endpoint with a GET method.
-- We receive some random data back and we only render the secret and the username on the Homepage. 
-- Hope it made someone smile. 😊
+
+- Responsive Website.
+
+- Create new Notes about some Book
+![Create Notes page](screenshots_for_README/create_notes.png)
+
+- The data gets stored in a Postgres Database with this Structure.
+![Database Structure for a Book Notes](screenshots_for_README/diagram1.png)
+
+- Read the Notes on a choosen book.
+![Read a book Notes page](screenshots_for_README/read_notes.png)
+
+- Edit some Notes.
+![Edit Notes page ](screenshots_for_README/edit_notes.png)
+
+- Delete Notes.
+![Actions on a Book's Notes](screenshots_for_README/notes_actions.png)
+
+- An API to allow other people or agents to fetch all the Books and Notes or the Notes on a particular by id.
+![Api test 1 with postman](screenshots_for_README/api-test1.png)
+![Api test 2 with postman](screenshots_for_README/api-test2.png)
+
 
 ## Tech used
 Javascript
 
-NodeJS  v24.13.0 https://nodejs.org/
+NodeJS        v24.13.0 https://nodejs.org/
 
-Nodemon v3.1.11  https://www.npmjs.com/package/nodemon  (optional)
+Nodemon       v3.1.11  https://www.npmjs.com/package/nodemon  (optional)
 
-Express v5.2.1   https://www.npmjs.com/package/express
+Express       v5.2.1   https://www.npmjs.com/package/express
 
-EJS     v3.1.10  https://www.npmjs.com/package/ejs
+EJS           v3.1.10  https://www.npmjs.com/package/ejs
 
-Axios   v1.13.2  https://www.npmjs.com/package/axios
+PostgreSql    v18.1-2  https://www.postgresql.org/docs/current/index.html
+
+Body-parser   v2.2.2   https://www.npmjs.com/package/body-parser
+
+Pg            v8.20.0  https://www.npmjs.com/package/pg
+
+Dotenv        v17.3.1  https://www.npmjs.com/package/dotenv
+
+Axios         v1.14.0  https://www.npmjs.com/package/axios
+
+PgAdmin4
+
+Postman to test the API
+
 
 ## Installation
-Make sure you're in the root directory then run 
+First go in PgAdmin, and create a new database. 
+On my side, for this project I named that database "book_notes".
+Copy what's inside queries.sql and paste it to run a query for this new database. 
+You'll create the Database Structure necessary to run this project.
+(Optional: you can also run what's inside test-data.sql to get some test datas).
 
-|  npm i  | or |  npm install  | to install the express, ejs and axios dependencies.
 
-|  node index.js  | or |  nodemon index.js  | to start the server.
+In your IDE's terminal, cd into the project then run ---  npm i  --- or ---  npm install  --- to install the express, ejs, body-parser, pg, dotenv and axios dependencies.
 
+Create a new file named .env, then inside it, paste what's in .env.example and replace the variables names with the correct values about your database. (Mandatory to run this project).
 
-## Usage Example
+You can now run --- node server.js --- or --- nodemon server.js --- in your IDE terminal to start the server and browse the website while performing some CRUD operations.
 
-![Homepage](screenshots_for_README/example.png)
-
+Run -- node api.js -- or -- nodemon api.js -- in the terminal to run the Api if you want.
