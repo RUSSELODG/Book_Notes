@@ -30,6 +30,7 @@ let OrderBooksAndNotesBy = "books.last_updated_at DESC"; // recency, latest upda
 const try_again_msg = " Please Go back to the previous page and try again!";
 const logDashes = ("-------------------------------------------------------------");
 
+// Querying the Book and Notes from the database
 async function checkBookAndNotes() {
     let booksAndNotes = [];
     const result = await db.query(`SELECT * FROM notes JOIN books ON books.id = book_id ORDER BY ${OrderBooksAndNotesBy}`);
@@ -44,6 +45,7 @@ async function checkBookAndNotes() {
     return booksAndNotes;
 }
 
+// Checking if the user wrote some correct values before adding to the database
 async function checkNotesUserWrote (reqBody) {
     const title = reqBody.title.trim();
     const author = reqBody.author.trim();
@@ -97,6 +99,7 @@ async function checkNotesUserWrote (reqBody) {
     };
 }
 
+// checking if a book with a particular id exists
 async function checkBookNotesExists (book_id) {
     let result = await db.query("SELECT 1 FROM notes JOIN books ON books.id = book_id WHERE books.id = $1", [book_id]);
     if (result.rowCount === 0) {
